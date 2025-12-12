@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me | MENDI FAVOUR Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="the.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="navbar container">
+            <a href="index.html" class="logo">Mendi <span>Fvour</span></a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="cv.html">My CV</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Contact Main Section -->
+    <section class="contact-page">
+        <div class="container">
+            <h1>Get In Touch</h1>
+            <p class="section-intro">Have a project in mind or want to discuss an opportunity? Feel free to reach out!</p>
+            
+            <!-- Contact Methods Toggle -->
+            <div class="contact-methods-toggle">
+                <button class="method-btn active" data-method="form">Contact Form</button>
+                <button class="method-btn" data-method="direct">Direct Email</button>
+            </div>
+            
+            <!-- Contact Container -->
+            <div class="contact-container">
+                <!-- Contact Info Sidebar -->
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3><i class="fas fa-envelope"></i> Email Me</h3>
+                        <!-- CHANGE: Update with your email -->
+                        <p>favourmendi@gmail.com</p>
+                        <a href="mailto:john.doe@example.com" class="btn contact-btn">Send Email</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3><i class="fas fa-phone"></i> Call Me</h3>
+                        <!-- CHANGE: Update with your phone number -->
+                        <p>+(237) 677-008-20</p>
+                        <a href="tel:+11234567890" class="btn contact-btn">Call Now</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
+                        <!-- CHANGE: Update with your location -->
+                        <p>New York, NY</p>
+                        <a href="https://maps.google.com" target="_blank" class="btn contact-btn">View Map</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3><i class="fas fa-clock"></i> Availability</h3>
+                        <p>Monday - Friday: 9AM - 6PM EST</p>
+                        <p>Response Time: Within 24 hours</p>
+                    </div>
+                </div>
+                
+                <!-- Contact Form Section -->
+                <div class="contact-form-section active" id="formSection">
+                    <h2>Send a Message via Form</h2>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Your Name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" name="subject" required placeholder="Project Inquiry">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" name="message" required placeholder="Tell me about your project..." rows="6"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget">Project Budget (Optional)</label>
+                            <select id="budget" name="budget">
+                                <option value="">Select budget range</option>
+                                <option value="under-1000">Under $1,000</option>
+                                <option value="1000-5000">$1,000 - $5,000</option>
+                                <option value="5000-10000">$5,000 - $10,000</option>
+                                <option value="10000+">$10,000+</option>
+                                <option value="not-sure">Not sure yet</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Needed (Optional)</label>
+                            <select id="service" name="service">
+                                <option value="">Select service</option>
+                                <option value="web-dev">Web Development</option>
+                                <option value="web-design">Web Design</option>
+                                <option value="graphic-design">Graphic Design</option>
+                                <option value="wordpress">WordPress Development</option>
+                                <option value="consultation">Consultation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn submit-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message 
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Direct Email Section -->
+                <div class="direct-email-section" id="directSection">
+                    <h2>Send Direct Email</h2>
+                    <div class="direct-email-info">
+                        <div class="email-method">
+                            <i class="fas fa-envelope-open-text"></i>
+                            <h3>Option 1: Use Your Email Client</h3>
+                            <p>Click the button below to open your default email client with a pre-filled message.</p>
+                            <!-- CHANGE: Update with your email -->
+                            <a href="mailto:john.doe@example.com?subject=Project%20Inquiry&body=Hello%20John%2C%0D%0A%0D%0AI'm%20interested%20in%20discussing%20a%20project%20with%20you.%20Please%20find%20my%20details%20below%3A%0D%0A%0D%0A- Project Type%3A%0D%0A- Budget Range%3A%0D%0A- Timeline%3A%0D%0A- Additional Details%3A%0D%0A%0D%0ALooking%20forward%20to%20your%20response%21%0D%0A%0D%0ABest%20regards%2C" 
+                               class="btn direct-email-btn">
+                                <i class="fas fa-paper-plane"></i> Open Email Client
+                            </a>
+                        </div>
+                        
+                        <div class="email-method">
+                            <i class="fas fa-copy"></i>
+                            <h3>Option 2: Copy Email Address</h3>
+                            <p>Copy my email address to paste into your preferred email application.</p>
+                            <div class="copy-email-container">
+                                <input type="text" readonly value="john.doe@example.com" id="emailToCopy">
+                                <button class="btn copy-btn" id="copyEmailBtn">
+                                    <i class="far fa-copy"></i> Copy Email
+                                </button>
+                            </div>
+                            <p class="copy-success" id="copySuccess" style="display: none;">
+                                <i class="fas fa-check-circle"></i> Email copied to clipboard!
+                            </p>
+                        </div>
+                        
+                        <div class="email-method">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>Option 3: Quick Contact</h3>
+                            <p>For urgent matters, you can also reach me via phone or social media.</p>
+                            <div class="quick-contact-btns">
+                                <a href="tel:+11234567890" class="btn quick-btn">
+                                    <i class="fas fa-phone"></i> Call Now
+                                </a>
+                                <a href="https://wa.me/677008520" target="_blank" class="btn quick-btn whatsapp-btn">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="email-tips">
+                        <h4><i class="fas fa-lightbulb"></i> Tips for a Good Inquiry:</h4>
+                        <ul>
+                            <li>Include a clear subject line</li>
+                            <li>Briefly describe your project or needs</li>
+                            <li>Mention your budget and timeline if known</li>
+                            <li>Include your contact information</li>
+                            <li>Attach any relevant files or references</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What is your typical response time?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>I typically respond to inquiries within 24 hours on business days. For urgent matters, please mention "URGENT" in your subject line or call me directly.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Do you work with clients remotely?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, I work with clients from all over the world. I use video calls, email, and project management tools to ensure smooth communication.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What are your payment terms?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>For most projects, I require a 50% deposit to begin work, with the remaining 50% due upon project completion. For larger projects, we can discuss milestone-based payments.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Which contact method is best?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>For detailed project discussions, use the contact form or direct email. For quick questions, phone or WhatsApp is faster. Feel free to choose whichever method you're most comfortable with.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content container">
+            <h3>MENDI FAVOUR</h3>
+            <p>Web Developer & Graphic Designer</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-dribbble"></i></a>
+                <a href="#"><i class="fab fa-behance"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span class="current-year">2023</span> MENDI FAVOUR. All rights reserved.</p>
+                <p>Designed and developed with <i class="fas fa-heart"></i></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

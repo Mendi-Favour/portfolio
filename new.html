@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mendi Favour | Full-Stack Developer Portfolio</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4ad66d;
+            --warning-color: #f8961e;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        /* Custom Navbar */
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--primary-color) !important;
+        }
+        
+        .navbar-brand span:nth-child(1) { color: var(--primary-color); }
+        .navbar-brand span:nth-child(2) { color: var(--secondary-color); }
+        .navbar-brand span:nth-child(3) { color: var(--accent-color); }
+        .navbar-brand span:nth-child(4) { color: var(--warning-color); }
+        
+        .navbar {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding-top: 0.8rem;
+            padding-bottom: 0.8rem;
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.9) 0%, rgba(58, 12, 163, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 0 6rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-section p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Section Styling */
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-padding {
+            padding: 5rem 0;
+        }
+        
+        .bg-light-section {
+            background-color: #f8fafc;
+        }
+        
+        /* Skill Cards */
+        .skill-card {
+            border: none;
+            border-radius: 12px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Progress Bars */
+        .progress {
+            height: 10px;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .progress-bar {
+            border-radius: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+        
+        .skill-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        /* Portfolio Cards */
+        .portfolio-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .portfolio-img {
+            height: 220px;
+            object-fit: cover;
+            width: 100%;
+        }
+        
+        /* Contact Form */
+        .contact-form .form-control {
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            transition: all 0.3s;
+        }
+        
+        .contact-form .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 0.75rem;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section {
+                padding: 6rem 0 4rem;
+                text-align: center;
+            }
+            
+            .profile-img {
+                width: 200px;
+                height: 200px;
+                margin-top: 2rem;
+            }
+            
+            .section-padding {
+                padding: 3rem 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-section p {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Button Customization */
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 0.6rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 0.6rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        /* Experience Cards */
+        .experience-card {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span>R</span><span>O</span><span>man</span><span>TIC</span>
+                <i class="bi bi-wrench-adjustable-circle-fill ms-2"></i>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a href="#contact" class="btn btn-primary">Get Started</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <h1 class="display-4 fw-bold">Hi, I'm <span class="text-warning">Mendi Favour</span></h1>
+                    <p class="lead">A passionate Full-Stack Developer & Graphic Designer crafting exceptional digital experiences with modern technologies.</p>
+                    <div class="mt-4">
+                        <a href="#portfolio" class="btn btn-light btn-lg me-3">View My Work</a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg">Contact Me</a>
+                    </div>
+                    <div class="mt-5">
+                        <div class="d-flex flex-wrap">
+                            <div class="me-4 mb-2">
+                                <h3 class="fw-bold">20+</h3>
+                                <p class="mb-0">Projects Completed</p>
+                            </div>
+                            <div class="me-4 mb-2">
+                                <h3 class="fw-bold">5+</h3>
+                                <p class="mb-0">Happy Clients</p>
+                            </div>
+                            <div class="mb-2">
+                                <h3 class="fw-bold">3+</h3>
+                                <p class="mb-0">Years Experience</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         class="profile-img rounded-circle" alt="Mendi Favour">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <p class="fs-5">I am a passionate and dedicated web developer with a strong foundation in modern web technologies. My journey began with HTML and CSS, and I've since expanded my skill set to include JavaScript, Bootstrap, and WordPress.</p>
+                    <p>I enjoy creating responsive, user-friendly websites that not only look great but also perform efficiently across all devices. As a student of software engineering, I approach every project with a problem-solving mindset and attention to detail.</p>
+                    <p>I'm constantly learning and experimenting with new tools to stay current in this fast-evolving field. Collaboration and communication are core to my work, as I believe great websites come from strong teamwork.</p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6 mb-3">
+                            <h5><i class="bi bi-person-check me-2 text-primary"></i> Profile</h5>
+                            <p class="mb-1"><strong>Name:</strong> Mendi Favour</p>
+                            <p class="mb-1"><strong>School:</strong> ESCHOSYS BIFMEF</p>
+                            <p class="mb-1"><strong>Email:</strong> mendifavour634@gmail.com</p>
+                            <p class="mb-1"><strong>Phone:</strong> +237 676359314</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h5><i class="bi bi-briefcase me-2 text-primary"></i> Services</h5>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Web Development</li>
+                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> Graphic Design</li>
+                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> UI/UX Design</li>
+                                <li><i class="bi bi-check-circle-fill text-success me-2"></i> WordPress</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn btn-primary mt-3">
+                        <i class="bi bi-download me-2"></i> Download CV
+                    </a>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-body p-4">
+                            <h4 class="card-title mb-4">What I Do</h4>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="skill-icon text-center">
+                                        <i class="bi bi-code-slash"></i>
+                                    </div>
+                                    <h5 class="text-center">Web Development</h5>
+                                    <p class="text-center text-muted">Building responsive, modern websites with clean code and best practices.</p>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="skill-icon text-center">
+                                        <i class="bi bi-palette"></i>
+                                    </div>
+                                    <h5 class="text-center">Graphic Design</h5>
+                                    <p class="text-center text-muted">Creating visually appealing designs for branding, marketing, and digital media.</p>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="skill-icon text-center">
+                                        <i class="bi bi-wordpress"></i>
+                                    </div>
+                                    <h5 class="text-center">WordPress</h5>
+                                    <p class="text-center text-muted">Custom WordPress themes and plugins for powerful, easy-to-manage websites.</p>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="skill-icon text-center">
+                                        <i class="bi bi-file-earmark-spreadsheet"></i>
+                                    </div>
+                                    <h5 class="text-center">Excel Management</h5>
+                                    <p class="text-center text-muted">Data analysis, visualization, and automation with advanced Excel techniques.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-padding bg-light-section">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <p class="text-center mb-5">I continuously work to improve my skills and stay up-to-date with the latest technologies.</p>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-5">
+                    <div class="skill-label">
+                        <span>HTML/CSS</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    
+                    <div class="skill-label">
+                        <span>Bootstrap/Responsive Design</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    
+                    <div class="skill-label">
+                        <span>JavaScript</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    
+                    <div class="skill-label">
+                        <span>WordPress</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-5">
+                    <div class="skill-label">
+                        <span>Adobe Photoshop</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    
+                    <div class="skill-label">
+                        <span>Adobe Illustrator</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    
+                    <div class="skill-label">
+                        <span>Excel/Data Management</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    
+                    <div class="skill-label">
+                        <span>UI/UX Design</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-4 mb-4">
+                    <div class="card skill-card shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="skill-icon">
+                                <i class="bi bi-laptop"></i>
+                            </div>
+                            <h5 class="card-title">Web Development</h5>
+                            <p class="card-text">Building responsive, modern websites with clean code and best practices.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card skill-card shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="skill-icon">
+                                <i class="bi bi-brush"></i>
+                            </div>
+                            <h5 class="card-title">Graphic Design</h5>
+                            <p class="card-text">Creating visually appealing designs for branding, marketing, and digital media.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card skill-card shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="skill-icon">
+                                <i class="bi bi-tools"></i>
+                            </div>
+                            <h5 class="card-title">Problem Solving</h5>
+                            <p class="card-text">Analytical thinking and creative solutions for complex technical challenges.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">My Portfolio</h2>
+            <p class="text-center mb-5">A selection of my recent projects showcasing my skills in web development and design.</p>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="portfolio-card">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             class="portfolio-img" alt="Business Website">
+                        <div class="p-4">
+                            <h5>Business Website</h5>
+                            <p class="text-muted">A responsive corporate website built with Bootstrap 5 and custom JavaScript.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-primary">Web Development</span>
+                                <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="portfolio-card">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             class="portfolio-img" alt="E-commerce Platform">
+                        <div class="p-4">
+                            <h5>E-commerce Platform</h5>
+                            <p class="text-muted">Full-featured online store with product catalog, cart, and checkout system.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-primary">E-commerce</span>
+                                <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="portfolio-card">
+                        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             class="portfolio-img" alt="Brand Identity Design">
+                        <div class="p-4">
+                            <h5>Brand Identity Design</h5>
+                            <p class="text-muted">Complete brand package including logo, business cards, and marketing materials.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-success">Graphic Design</span>
+                                <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-primary btn-lg">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section-padding bg-light-section">
+        <div class="container">
+            <h2 class="section-title">Experience & Projects</h2>
+            
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h4 class="card-title mb-4">Web Development</h4>
+                            <div class="experience-card">
+                                <h6>Portfolio Website</h6>
+                                <p class="small text-muted">Designed and developed a personal portfolio using HTML, CSS, and Bootstrap. Fully responsive with smooth navigation and interactive modals.</p>
+                            </div>
+                            <div class="experience-card">
+                                <h6>Blog Website with WordPress</h6>
+                                <p class="small text-muted">Customized a WordPress theme for a personal blog site. Integrated SEO plugins and mobile-optimized layouts.</p>
+                            </div>
+                            <div class="experience-card">
+                                <h6>Responsive Landing Page</h6>
+                                <p class="small text-muted">Promote a product or service with strong CTAs and mobile-friendly layout.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h4 class="card-title mb-4">Graphic Design</h4>
+                            <div class="experience-card">
+                                <h6>Business Card Design</h6>
+                                <p class="small text-muted">Created a modern business card layout using Adobe Photoshop. Exported print-ready formats and optimized designs for branding.</p>
+                            </div>
+                            <div class="experience-card">
+                                <h6>Event Poster Design</h6>
+                                <p class="small text-muted">Designed promotional event posters using Adobe Illustrator. Focused on bold typography and visual hierarchy for print and digital use.</p>
+                            </div>
+                            <div class="experience-card">
+                                <h6>Branding Kit</h6>
+                                <p class="small text-muted">Logo, color palette, and typography guide for a mock business.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h4 class="card-title mb-4">Professional Experience</h4>
+                            <div class="experience-card">
+                                <h6>Web Development Intern</h6>
+                                <p class="small text-muted">Supported senior developers in coding, testing, and debugging software applications. Assisted in front-end development with HTML, CSS, and JavaScript.</p>
+                            </div>
+                            <div class="experience-card">
+                                <h6>Version Control & Collaboration</h6>
+                                <p class="small text-muted">Gained practical experience with version control tools like Git and GitHub for collaboration and project management.</p>
+                            </div>
+                            <div class="experience-card">
+                                <h6>UI/UX Testing</h6>
+                                <p class="small text-muted">Helped with user interface testing and ensured responsiveness across different devices and screen sizes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="text-center mb-5">Have a project in mind? Let's work together to bring your ideas to life.</p>
+            
+            <div class="row">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <h4 class="mb-4">Contact Information</h4>
+                    <div class="d-flex mb-4">
+                        <div class="icon-box me-3">
+                            <i class="bi bi-geo-alt"></i>
+                        </div>
+                        <div>
+                            <h6>Location</h6>
+                            <p class="mb-0">ESCHOSYS BIFMEF<br>Yaounde, Cameroon</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="icon-box me-3">
+                            <i class="bi bi-envelope"></i>
+                        </div>
+                        <div>
+                            <h6>Email</h6>
+                            <p class="mb-0">mendifavour634@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="icon-box me-3">
+                            <i class="bi bi-phone"></i>
+                        </div>
+                        <div>
+                            <h6>Phone</h6>
+                            <p class="mb-0">+237 676359314</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <h6 class="mb-3">Follow Me</h6>
+                        <div class="social-icons">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-7">
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-body p-4 p-md-5">
+                            <h4 class="mb-4">Send Me a Message</h4>
+                            <form class="contact-form">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="name" class="form-label">Your Name</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">Your Email</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <input type="text" class="form-control" id="subject">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="mb-3">Mendi Favour</h5>
+                    <p>Full-Stack Developer & Graphic Designer passionate about creating exceptional digital experiences.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-white-50 text-decoration-none">Home</a></li>
+                        <li><a href="#about" class="text-white-50 text-decoration-none">About</a></li>
+                        <li><a href="#skills" class="text-white-50 text-decoration-none">Skills</a></li>
+                        <li><a href="#portfolio" class="text-white-50 text-decoration-none">Portfolio</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="mb-3">Services</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white-50 text-decoration-none">Web Development</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Graphic Design</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">WordPress</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Excel Management</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3">
+                    <h5 class="mb-3">Newsletter</h5>
+                    <p class="text-white-50">Subscribe to get updates on my latest projects and tutorials.</p>
+                    <form class="mt-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your Email">
+                            <button class="btn btn-primary" type="button">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <hr class="my-4 border-light">
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2023 Mendi Favour. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Navbar active state update on scroll
+        const sections = document.querySelectorAll('section[id]');
+        
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY + 100;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Form submission (placeholder)
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
